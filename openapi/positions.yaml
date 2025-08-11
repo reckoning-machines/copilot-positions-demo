@@ -1,0 +1,34 @@
+openapi: 3.0.1
+info:
+  title: Positions API
+  version: 0.1.0
+servers:
+  - url: http://localhost:8000
+paths:
+  /positions/{ticker}:
+    get:
+      operationId: getPosition
+      summary: Get Position by Ticker
+      parameters:
+        - name: ticker
+          in: path
+          required: true
+          schema:
+            type: string
+            example: AAPL
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ticker:
+                    type: string
+                  quantity:
+                    type: number
+                  avg_price:
+                    type: number
+        '500':
+          description: Error
